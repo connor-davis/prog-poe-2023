@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SimpleRecipes.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -62,14 +63,28 @@ namespace SimpleRecipes.Gui
 
                         Clear();
                         Show();
+                        
                         break;
                     }
                 case 4:
                     {
+                        Recipe storedRecipe = (Recipe) Program.GetRecipe();
+
+                        storedRecipe.SetRecipeScaleFactor(1.0f);
+                        Program.SetRecipe(storedRecipe);
+
+                        Clear();
+                        Show();
+
                         break;
                     }
                 case 5:
                     {
+                        Program.SetRecipe(new Recipe());
+
+                        Clear();
+                        Show();
+
                         break;
                     }
                 case 6:

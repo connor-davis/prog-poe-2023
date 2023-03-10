@@ -16,10 +16,9 @@ namespace SimpleRecipes.Gui
             DisplayHeader("Choose the scale factor from the menu below.");
 
             Console.WriteLine("1. Scale by half");
-            Console.WriteLine("2. Scale by one");
-            Console.WriteLine("3. Scale by double");
-            Console.WriteLine("4. Scale by triple");
-            Console.WriteLine("5. Back to main menu.");
+            Console.WriteLine("2. Scale by double");
+            Console.WriteLine("3. Scale by triple");
+            Console.WriteLine("4. Back to main menu.");
             Console.WriteLine();
             Console.Write("> ");
 
@@ -36,23 +35,17 @@ namespace SimpleRecipes.Gui
                     }
                 case 2:
                     {
-                        storedRecipe.SetRecipeScaleFactor(1.0f);
+                        storedRecipe.SetRecipeScaleFactor(2.0f);
                         Program.SetRecipe(storedRecipe);
                         break;
                     }
                 case 3:
                     {
-                        storedRecipe.SetRecipeScaleFactor(2.0f);
-                        Program.SetRecipe(storedRecipe);
-                        break;
-                    }
-                case 4:
-                    {
                         storedRecipe.SetRecipeScaleFactor(3.0f);
                         Program.SetRecipe(storedRecipe);
                         break;
                     }
-                case 5:
+                case 4:
                     {
                         break;
                     }

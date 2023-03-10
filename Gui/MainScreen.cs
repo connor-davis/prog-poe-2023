@@ -26,85 +26,92 @@ namespace SimpleRecipes.Gui
             Console.WriteLine();
             Console.Write("> ");
 
-            int choice = Int32.Parse(Console.ReadLine()); // Read the users menu choice from the Console.
-
-            switch (choice)
+            try
             {
-                case 1:
-                    {
-                        CreateRecipeScreen createRecipeScreen = new();
+                int choice = Int32.Parse(Console.ReadLine()); // Read the users menu choice from the Console.
 
-                        Clear(); // Method provided by the ConsoleGui class.
-                        createRecipeScreen.Show();
-
-                        Clear();
-                        Show();
-
-                        break;
-                    }
-                case 2:
-                    {
-                        DisplayRecipeScreen displayRecipeScreen = new();
-
-                        Clear();
-                        displayRecipeScreen.Show();
-
-                        Clear();
-                        Show();
-
-                        break;
-                    }
-                case 3:
-                    {
-                        RecipeScaleFactorScreen scaleRecipeScreen = new();
-
-                        Clear();
-                        scaleRecipeScreen.Show();
-
-                        Clear();
-                        Show();
-                        
-                        break;
-                    }
-                case 4:
-                    {
-                        Recipe storedRecipe = (Recipe) Program.GetRecipe();
-
-                        if (storedRecipe == null)
+                switch (choice)
+                {
+                    case 1:
                         {
+                            CreateRecipeScreen createRecipeScreen = new();
+
+                            Clear(); // Method provided by the ConsoleGui class.
+                            createRecipeScreen.Show();
+
                             Clear();
                             Show();
 
                             break;
                         }
+                    case 2:
+                        {
+                            DisplayRecipeScreen displayRecipeScreen = new();
 
-                        storedRecipe.SetRecipeScaleFactor(1.0f);
-                        Program.SetRecipe(storedRecipe);
+                            Clear();
+                            displayRecipeScreen.Show();
 
-                        Clear();
-                        Show();
+                            Clear();
+                            Show();
 
-                        break;
-                    }
-                case 5:
-                    {
-                        Program.SetRecipe(null);
+                            break;
+                        }
+                    case 3:
+                        {
+                            RecipeScaleFactorScreen scaleRecipeScreen = new();
 
-                        Clear();
-                        Show();
+                            Clear();
+                            scaleRecipeScreen.Show();
 
-                        break;
-                    }
-                case 6:
-                    {
-                        break;
-                    }
-                default:
-                    {
-                        Clear(); // Method provided by the ConsoleGui class.
-                        Show();
-                        break;
-                    }
+                            Clear();
+                            Show();
+
+                            break;
+                        }
+                    case 4:
+                        {
+                            Recipe storedRecipe = (Recipe)Program.GetRecipe();
+
+                            if (storedRecipe == null)
+                            {
+                                Clear();
+                                Show();
+
+                                break;
+                            }
+
+                            storedRecipe.SetRecipeScaleFactor(1.0f);
+                            Program.SetRecipe(storedRecipe);
+
+                            Clear();
+                            Show();
+
+                            break;
+                        }
+                    case 5:
+                        {
+                            Program.SetRecipe(null);
+
+                            Clear();
+                            Show();
+
+                            break;
+                        }
+                    case 6:
+                        {
+                            break;
+                        }
+                    default:
+                        {
+                            Clear(); // Method provided by the ConsoleGui class.
+                            Show();
+                            break;
+                        }
+                }
+            } catch (Exception ex)
+            {
+                Clear();
+                Show();
             }
         }
     }

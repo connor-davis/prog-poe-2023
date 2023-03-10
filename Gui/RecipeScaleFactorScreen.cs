@@ -34,39 +34,46 @@ namespace SimpleRecipes.Gui
             Console.WriteLine();
             Console.Write("> ");
 
-            int choice = Int32.Parse(Console.ReadLine());
-
-            switch (choice)
+            try
             {
-                case 1:
-                    {
-                        storedRecipe.SetRecipeScaleFactor(0.5f);
-                        Program.SetRecipe(storedRecipe);
-                        break;
-                    }
-                case 2:
-                    {
-                        storedRecipe.SetRecipeScaleFactor(2.0f);
-                        Program.SetRecipe(storedRecipe);
-                        break;
-                    }
-                case 3:
-                    {
-                        storedRecipe.SetRecipeScaleFactor(3.0f);
-                        Program.SetRecipe(storedRecipe);
-                        break;
-                    }
-                case 4:
-                    {
-                        break;
-                    }
-                default:
-                    {
-                        Clear();
-                        Show();
+                int choice = Int32.Parse(Console.ReadLine());
 
-                        break;
-                    }
+                switch (choice)
+                {
+                    case 1:
+                        {
+                            storedRecipe.SetRecipeScaleFactor(0.5f);
+                            Program.SetRecipe(storedRecipe);
+                            break;
+                        }
+                    case 2:
+                        {
+                            storedRecipe.SetRecipeScaleFactor(2.0f);
+                            Program.SetRecipe(storedRecipe);
+                            break;
+                        }
+                    case 3:
+                        {
+                            storedRecipe.SetRecipeScaleFactor(3.0f);
+                            Program.SetRecipe(storedRecipe);
+                            break;
+                        }
+                    case 4:
+                        {
+                            break;
+                        }
+                    default:
+                        {
+                            Clear();
+                            Show();
+
+                            break;
+                        }
+                }
+            } catch (Exception ex)
+            {
+                Clear();
+                Show();
             }
         }
     }

@@ -197,7 +197,9 @@ namespace SimpleRecipes.Gui
          */
         public void ClearLine()
         {
-            Console.Write("\r" + new string(' ', Console.WindowWidth) + "\r");
+            Console.SetCursorPosition(0, Console.CursorTop);
+            Console.Write(new string(' ', Console.WindowWidth));
+            Console.SetCursorPosition(0, Console.CursorTop - (Console.WindowWidth >= Console.BufferWidth ? 1 : 0));
         }
     }
 }

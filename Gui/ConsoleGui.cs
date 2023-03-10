@@ -35,15 +35,15 @@ namespace SimpleRecipes.Gui
          */
         public static void DisplayHeader(String text)
         {
-            int ConsoleWidth = Console.BufferWidth;
+            int ConsoleWidth = Console.BufferWidth; // Get the most number of characters currently on one line of the console
 
-            for (int i = 0; i < ConsoleWidth; i++)
+            for (int i = 0; i < ConsoleWidth; i++) // Loop through them
             {
-                Console.Write("*");
+                Console.Write("*"); // Write * for every character in one line
             }
 
             Console.Write("\n");
-            Console.WriteLine("* " + text);
+            Console.WriteLine("* " + text); // Write the header text to the console
 
             for (int i = 0; i < ConsoleWidth; i++)
             {

@@ -80,7 +80,7 @@ namespace SimpleRecipes.Gui
                     }
                 case 5:
                     {
-                        Program.SetRecipe(new Recipe());
+                        Program.SetRecipe(null);
 
                         Clear();
                         Show();

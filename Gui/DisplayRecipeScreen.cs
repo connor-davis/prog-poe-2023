@@ -22,6 +22,15 @@ namespace SimpleRecipes.Gui
              */
             Recipe recipe = (Recipe) Program.GetRecipe();
 
+            if (recipe == null)
+            {
+                Console.WriteLine("There is no stored recipe. Please create one.\n");
+                Console.WriteLine("Press any key to go back to the main menu.");
+                Console.ReadLine();
+
+                return;
+            }
+
             DisplayHeader("Ingredients");
 
             IIngredient[] ingredients = recipe.GetIngredients();

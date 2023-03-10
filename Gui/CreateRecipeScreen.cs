@@ -37,9 +37,9 @@ namespace SimpleRecipes.Gui
 
             for (int i = 1; i < numberOfIngredients + 1; i++)
             {
-                string ingredientName = GetStringInput("What is the name of ingredient " + i + "? [word]");
+                string ingredientName = GetStringInput("What is the name of ingredient " + i + "? [word]", false);
                 int ingredientQuantity = GetIntInput("What is the quantity of ingredient " + i + "? [number]");
-                string ingredientUnitOfMeasurement = GetStringInput("What is the unit of measurement of ingredient " + i + "? [word, e.g. ml]");
+                string ingredientUnitOfMeasurement = GetStringInput("What is the unit of measurement of ingredient " + i + "? [word, e.g. ml]", true);
 
                 /**
                  * We can now create a new ingredient with the information gathered
@@ -62,7 +62,7 @@ namespace SimpleRecipes.Gui
 
             for (int i = 1; i < numberOfSteps + 1; i++)
             {
-                string stepDescription = GetStringInput("What is the description of step " + i);
+                string stepDescription = GetStringInput("What is the description of step " + i, false);
 
                 /**
                  * We can now create a new ingredient with the information gathered

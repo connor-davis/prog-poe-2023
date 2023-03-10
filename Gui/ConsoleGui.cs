@@ -57,17 +57,29 @@ namespace SimpleRecipes.Gui
         /**
          * This method will return a string from the user
          */
-        public string GetStringInput(string prompt)
+        public string GetStringInput(string prompt, bool canBeEmpty)
         {
             try
             {
                 Console.Write(prompt + ": ");
 
-                return Console.ReadLine();
+                string value = Console.ReadLine();
+
+                if (canBeEmpty) return value;
+                else
+                {
+                    if (string.IsNullOrEmpty(value))
+                    {
+                        ClearLine();
+                        return GetStringInput(prompt, canBeEmpty);
+                    }
+                    else return value;
+                }
             }
             catch
             {
-                return GetStringInput(prompt);
+                ClearLine();
+                return GetStringInput(prompt, canBeEmpty);
             }
         }
 
@@ -84,6 +96,7 @@ namespace SimpleRecipes.Gui
             }
             catch
             {
+                ClearLine();
                 return GetIntInput(prompt);
             }
         }
@@ -101,6 +114,7 @@ namespace SimpleRecipes.Gui
             }
             catch
             {
+                ClearLine();
                 return GetDoubleInput(prompt);
             }
         }
@@ -118,6 +132,7 @@ namespace SimpleRecipes.Gui
             }
             catch
             {
+                ClearLine();
                 return GetFloatInput(prompt);
             }
         }
@@ -156,6 +171,7 @@ namespace SimpleRecipes.Gui
             }
             catch
             {
+                ClearLine();
                 return GetBooleanInput(prompt);
             }
         }
@@ -173,6 +189,15 @@ namespace SimpleRecipes.Gui
         public void Clear()
         {
             Console.Clear();
+        }
+
+        /**
+         * This method was found with <a href="">this</a> stack overflow resource and
+         * it will clear one line in the console.
+         */
+        public void ClearLine()
+        {
+            Console.Write("\r" + new string(' ', Console.WindowWidth) + "\r");
         }
     }
 }

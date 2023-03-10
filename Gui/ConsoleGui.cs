@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -51,6 +52,112 @@ namespace SimpleRecipes.Gui
             }
 
             Console.Write("\n");
+        }
+
+        /**
+         * This method will return a string from the user
+         */
+        public string GetStringInput(string prompt)
+        {
+            try
+            {
+                Console.Write(prompt + ": ");
+
+                return Console.ReadLine();
+            }
+            catch
+            {
+                return GetStringInput(prompt);
+            }
+        }
+
+        /**
+         * This method will return an int from the user
+         */
+        public int GetIntInput(string prompt)
+        {
+            try
+            {
+                Console.Write(prompt + ": ");
+
+                return Int32.Parse(Console.ReadLine());
+            }
+            catch
+            {
+                return GetIntInput(prompt);
+            }
+        }
+
+        /**
+         * This method will return an double from the user
+         */
+        public double GetDoubleInput(string prompt)
+        {
+            try
+            {
+                Console.Write(prompt + ": ");
+
+                return Double.Parse(Console.ReadLine());
+            }
+            catch
+            {
+                return GetDoubleInput(prompt);
+            }
+        }
+
+        /**
+         * This method will return an float from the user
+         */
+        public double GetFloatInput(string prompt)
+        {
+            try
+            {
+                Console.Write(prompt + ": ");
+
+                return NFloat.Parse(Console.ReadLine());
+            }
+            catch
+            {
+                return GetFloatInput(prompt);
+            }
+        }
+
+        /**
+         * This method will return an boolean from the user
+         */
+        public bool GetBooleanInput(string prompt)
+        {
+            try
+            {
+                Console.Write(prompt + ": ");
+
+                string value = Console.ReadLine().ToLower();
+
+                if (string.IsNullOrEmpty(value))
+                    return false;
+
+                switch (value)
+                {
+                    case "true":
+                        return true;
+                    case "false":
+                        return false;
+                    case "yes":
+                        return true;
+                    case "no":
+                        return false;
+                    case "y":
+                        return true;
+                    case "n":
+                        return false;
+                    default:
+                        return false;
+                }
+            }
+            catch
+            {
+                return GetBooleanInput(prompt);
+            }
         }
 
         /**

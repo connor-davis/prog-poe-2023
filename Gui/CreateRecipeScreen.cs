@@ -27,9 +27,7 @@ namespace SimpleRecipes.Gui
 
             DisplayHeader("Ingredients");
 
-            Console.Write("How many ingredients will this recipe consist of? [number]: ");
-
-            int numberOfIngredients = Int32.Parse(Console.ReadLine());
+            int numberOfIngredients = GetIntInput("How many ingredients will this recipe consist of? [number]");
 
             /**
              * Second we can initialize a new IIngredients array using the
@@ -39,17 +37,9 @@ namespace SimpleRecipes.Gui
 
             for (int i = 1; i < numberOfIngredients + 1; i++)
             {
-                Console.Write("What is the name of ingredient " + i + "? [word]: ");
-
-                string ingredientName = Console.ReadLine();
-
-                Console.Write("What is the quantity of ingredient " + i + "? [number]: ");
-
-                int ingredientQuantity = Int32.Parse(Console.ReadLine());
-
-                Console.Write("What is the unit of measurement of ingredient " + i + "? [word, e.g. ml]: ");
-
-                string ingredientUnitOfMeasurement = Console.ReadLine();
+                string ingredientName = GetStringInput("What is the name of ingredient " + i + "? [word]");
+                int ingredientQuantity = GetIntInput("What is the quantity of ingredient " + i + "? [number]");
+                string ingredientUnitOfMeasurement = GetStringInput("What is the unit of measurement of ingredient " + i + "? [word, e.g. ml]");
 
                 /**
                  * We can now create a new ingredient with the information gathered
@@ -62,9 +52,7 @@ namespace SimpleRecipes.Gui
 
             DisplayHeader("Steps");
 
-            Console.Write("How many steps will this recipe consist of? [number]: ");
-
-            int numberOfSteps = Int32.Parse(Console.ReadLine());
+            int numberOfSteps = GetIntInput("How many steps will this recipe consist of? [number]");
 
             /**
              * Second we can initialize a new IIngredients array using the
@@ -74,9 +62,7 @@ namespace SimpleRecipes.Gui
 
             for (int i = 1; i < numberOfSteps + 1; i++)
             {
-                Console.Write("What is the description of step " + i + ": ");
-
-                string stepDescription = Console.ReadLine();
+                string stepDescription = GetStringInput("What is the description of step " + i);
 
                 /**
                  * We can now create a new ingredient with the information gathered

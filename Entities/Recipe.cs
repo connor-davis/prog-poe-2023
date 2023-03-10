@@ -11,6 +11,7 @@ namespace SimpleRecipes.Entities
     {
         private IIngredient[] Ingredients;
         private IStep[] Steps;
+        private float RecipeScaleFactor;
 
         public Recipe() { }
 
@@ -30,6 +31,8 @@ namespace SimpleRecipes.Entities
             return Steps;
         }
 
+        public float GetRecipeScaleFactor() { return RecipeScaleFactor; }
+
         public void SetIngredients(IIngredient[] ingredients)
         {
             Ingredients = ingredients;
@@ -38,6 +41,11 @@ namespace SimpleRecipes.Entities
         public void SetSteps(IStep[] steps)
         {
             Steps = steps;
+        }
+
+        public void SetRecipeScaleFactor(float recipeScaleFactor)
+        {
+            RecipeScaleFactor = recipeScaleFactor;
         }
     }
 }

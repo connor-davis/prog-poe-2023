@@ -43,10 +43,25 @@ namespace SimpleRecipes.Gui
                     }
                 case 2:
                     {
+                        DisplayRecipeScreen displayRecipeScreen = new();
+
+                        Clear();
+                        displayRecipeScreen.Show();
+
+                        Clear();
+                        Show();
+
                         break;
                     }
                 case 3:
                     {
+                        RecipeScaleFactorScreen scaleRecipeScreen = new();
+
+                        Clear();
+                        scaleRecipeScreen.Show();
+
+                        Clear();
+                        Show();
                         break;
                     }
                 case 4:

@@ -31,6 +31,29 @@ namespace SimpleRecipes.Gui
         }
 
         /**
+         * This method will display a header to the Console
+         */
+        public static void DisplayHeader(String text)
+        {
+            int ConsoleWidth = Console.BufferWidth;
+
+            for (int i = 0; i < ConsoleWidth; i++)
+            {
+                Console.Write("*");
+            }
+
+            Console.Write("\n");
+            Console.WriteLine("* " + text);
+
+            for (int i = 0; i < ConsoleWidth; i++)
+            {
+                Console.Write("*");
+            }
+
+            Console.Write("\n");
+        }
+
+        /**
          * This method will have to be overrided and implemented by the developer
          * as it is what will be called to display its gui.
          */

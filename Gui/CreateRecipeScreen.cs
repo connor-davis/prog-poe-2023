@@ -25,22 +25,7 @@ namespace SimpleRecipes.Gui
              */
             Recipe newRecipe = new Recipe();
 
-            int ConsoleWidth = Console.BufferWidth;
-
-            for (int i = 0; i < ConsoleWidth; i++)
-            {
-                Console.Write("*");
-            }
-
-            Console.Write("\n");
-            Console.WriteLine("* Ingredients");
-
-            for (int i = 0; i < ConsoleWidth; i++)
-            {
-                Console.Write("*");
-            }
-
-            Console.Write("\n");
+            DisplayHeader("Ingredients");
 
             Console.Write("How many ingredients will this recipe consist of? [number]: ");
 
@@ -75,20 +60,7 @@ namespace SimpleRecipes.Gui
                 ingredients[i - 1] = newIngredient;
             }
 
-            for (int i = 0; i < ConsoleWidth; i++)
-            {
-                Console.Write("*");
-            }
-
-            Console.Write("\n");
-            Console.WriteLine("* Steps");
-
-            for (int i = 0; i < ConsoleWidth; i++)
-            {
-                Console.Write("*");
-            }
-
-            Console.Write("\n");
+            DisplayHeader("Steps");
 
             Console.Write("How many steps will this recipe consist of? [number]: ");
 

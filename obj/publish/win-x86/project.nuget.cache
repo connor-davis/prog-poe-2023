@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "wQvV+LNBbomgtGZVwEWrxRK36LCx2pQj4iGHxKd4Av5LSt83ujQp77wSIrjv0VYBTWTyenSEbqUtwF8D9m+pjw==",
+  "success": true,
+  "projectFilePath": "C:\\prog-poe-2023\\SimpleRecipes.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Connor\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x86\\7.0.3\\microsoft.netcore.app.runtime.win-x86.7.0.3.nupkg.sha512",
+    "C:\\Users\\Connor\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x86\\7.0.3\\microsoft.windowsdesktop.app.runtime.win-x86.7.0.3.nupkg.sha512",
+    "C:\\Users\\Connor\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x86\\7.0.3\\microsoft.aspnetcore.app.runtime.win-x86.7.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

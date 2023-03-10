@@ -65,7 +65,10 @@ namespace SimpleRecipes.Gui
 
                 string value = Console.ReadLine();
 
-                if (canBeEmpty) return value;
+                if (canBeEmpty && value != null)
+                {
+                    return value;
+                }
                 else
                 {
                     if (string.IsNullOrEmpty(value))
@@ -73,7 +76,10 @@ namespace SimpleRecipes.Gui
                         ClearLine();
                         return GetStringInput(prompt, canBeEmpty);
                     }
-                    else return value;
+                    else
+                    {
+                        return value;
+                    }
                 }
             }
             catch
@@ -149,7 +155,9 @@ namespace SimpleRecipes.Gui
                 string value = Console.ReadLine().ToLower();
 
                 if (string.IsNullOrEmpty(value))
+                {
                     return false;
+                }
 
                 switch (value)
                 {

@@ -9,8 +9,6 @@ namespace SimpleRecipes.Gui
 {
     class MainScreen : ConsoleGui
     {
-        public MainScreen() { }
-
         public override void Show()
         {
             ShowApplicationName(); // Method provided by the ConsoleGui class.

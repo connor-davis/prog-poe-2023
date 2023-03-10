@@ -6,6 +6,8 @@ namespace SimpleRecipes
 {
     class Program
     {
+        protected Program() { }
+
         private static IRecipe Recipe;
 
         /**

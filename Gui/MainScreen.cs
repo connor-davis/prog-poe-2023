@@ -6,38 +6,13 @@ using System.Threading.Tasks;
 
 namespace SimpleRecipes.Gui
 {
-    internal class MainScreen : ConsoleGui
+    class MainScreen : ConsoleGui
     {
-        public MainScreen()
+        public MainScreen() { }
+
+        public override void Show()
         {
-            
-        }
-
-        public void Clear()
-        {
-            Console.Clear();
-        }
-
-        public void Show()
-        {
-            /**
-             * First this method will clear the console, then it will change the
-             * color of the consoles foreground, then it will write
-             * the title of the application to the console.
-             */
-            Console.Clear();
-
-            Console.ForegroundColor = ConsoleColor.DarkMagenta;
-
-            Console.WriteLine("\r\n  ******** ** ****     **** *******  **       ********       *******   ********   ******  ** *******  ********  ********\r\n **////// /**/**/**   **/**/**////**/**      /**/////       /**////** /**/////   **////**/**/**////**/**/////  **////// \r\n/**       /**/**//** ** /**/**   /**/**      /**            /**   /** /**       **    // /**/**   /**/**      /**       \r\n/*********/**/** //***  /**/******* /**      /*******       /*******  /******* /**       /**/******* /******* /*********\r\n////////**/**/**  //*   /**/**////  /**      /**////        /**///**  /**////  /**       /**/**////  /**////  ////////**\r\n       /**/**/**   /    /**/**      /**      /**            /**  //** /**      //**    **/**/**      /**             /**\r\n ******** /**/**        /**/**      /********/********      /**   //**/******** //****** /**/**      /******** ******** \r\n////////  // //         // //       //////// ////////       //     // ////////   //////  // //       //////// ////////  \r\n");
-            Console.WriteLine("");
-
-            /**
-             * Then this method will change the consoles foreground back to the
-             * default, then ask the user what they would like to do and give them 
-             * some options to choose from.
-             */
-            Console.ForegroundColor = ConsoleColor.White;
+            ShowApplicationName(); // Method provided by the ConsoleGui class.
 
             Console.WriteLine("Welcome back Chef. What would you like to do?");
             Console.WriteLine();
@@ -46,15 +21,24 @@ namespace SimpleRecipes.Gui
             Console.WriteLine("3. Change the stored recipe's scale factor.");
             Console.WriteLine("4. Reset the quantities of the stored recipe back to their initial values.");
             Console.WriteLine("5. Clear the stored recipe.");
+            Console.WriteLine("6. Close the application.");
             Console.WriteLine();
             Console.Write("> ");
 
-            int choice = Int32.Parse(Console.ReadLine());
+            int choice = Int32.Parse(Console.ReadLine()); // Read the users menu choice from the Console.
 
             switch (choice)
             {
                 case 1:
                     {
+                        CreateRecipeScreen createRecipeScreen = new();
+
+                        Clear(); // Method provided by the ConsoleGui class.
+                        createRecipeScreen.Show();
+
+                        Clear();
+                        Show();
+
                         break;
                     }
                 case 2:
@@ -73,9 +57,13 @@ namespace SimpleRecipes.Gui
                     {
                         break;
                     }
+                case 6:
+                    {
+                        break;
+                    }
                 default:
                     {
-                        Clear();
+                        Clear(); // Method provided by the ConsoleGui class.
                         Show();
                         break;
                     }

@@ -1,4 +1,6 @@
-﻿namespace SimpleRecipes
+﻿using SimpleRecipes.Gui;
+
+namespace SimpleRecipes
 {
     internal class Program
     {
@@ -8,7 +10,9 @@
          */
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!"); // Just print hello world to the console.
+            MainScreen mainScreen = new();
+
+            mainScreen.Show();
         }
     }
 }

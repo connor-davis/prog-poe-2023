@@ -70,6 +70,14 @@ namespace SimpleRecipes.Gui
                     {
                         Recipe storedRecipe = (Recipe) Program.GetRecipe();
 
+                        if (storedRecipe == null)
+                        {
+                            Clear();
+                            Show();
+
+                            break;
+                        }
+
                         storedRecipe.SetRecipeScaleFactor(1.0f);
                         Program.SetRecipe(storedRecipe);
 

@@ -1,4 +1,5 @@
 ﻿using SimpleRecipes.Entities;
+using SimpleRecipes.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,17 @@ namespace SimpleRecipes.Gui
         {
             ShowApplicationName();
 
+            Recipe storedRecipe = (Recipe)Program.GetRecipe();
+
+            if (storedRecipe == null)
+            {
+                Console.WriteLine("There is no stored recipe. Please create one.\n");
+                Console.WriteLine("Press any key to go back to the main menu.");
+                Console.ReadLine();
+
+                return;
+            }
+
             DisplayHeader("Choose the scale factor from the menu below.");
 
             Console.WriteLine("1. Scale by half");
@@ -23,7 +35,6 @@ namespace SimpleRecipes.Gui
             Console.Write("> ");
 
             int choice = Int32.Parse(Console.ReadLine());
-            Recipe storedRecipe = (Recipe) Program.GetRecipe();
 
             switch (choice)
             {

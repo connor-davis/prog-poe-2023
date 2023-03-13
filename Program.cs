@@ -1,14 +1,18 @@
 ﻿using SimpleRecipes.Gui;
 using SimpleRecipes.Entities;
 using SimpleRecipes.Interfaces;
+using System.Collections.ObjectModel;
+using SimpleRecipes.Managers;
 
 namespace SimpleRecipes
 {
     class Program
     {
+        public static RecipeManager RecipeManager;
+
         protected Program() { }
 
-        private static IRecipe Recipe;
+        
 
         /**
          * The Main method will execute all of the functions
@@ -16,15 +20,13 @@ namespace SimpleRecipes
          */
         static void Main(string[] args)
         {
+            RecipeManager = new RecipeManager();
+
             MainScreen mainScreen = new();
 
             mainScreen.Show();
         }
 
-        public static IRecipe GetRecipe() { return Recipe; }
-        public static void SetRecipe(Recipe recipe)
-        {
-            Recipe = recipe;
-        }
+        public static RecipeManager GetRecipeManager() { return RecipeManager; }
     }
 }

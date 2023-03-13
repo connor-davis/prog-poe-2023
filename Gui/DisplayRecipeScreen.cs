@@ -1,5 +1,4 @@
-﻿using SimpleRecipes.Entities;
-using SimpleRecipes.Interfaces;
+﻿using SimpleRecipes.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,51 +9,42 @@ namespace SimpleRecipes.Gui
 {
     class DisplayRecipeScreen : ConsoleGui
     {
+        private int RecipeIndex = 0;
+
+        public DisplayRecipeScreen()
+        {
+
+        }
+
+        public int GetRecipeIndex() {
+            return RecipeIndex;
+        }
+
+        public void SetRecipeIndex(int index) {
+            RecipeIndex = index;
+        }
+
         public override void Show()
         {
             ShowApplicationName();
 
-            /**
-             * Here we retrieve the recipe from the Program class
-             * that is stored in memory.
-             */
-            Recipe recipe = (Recipe) Program.GetRecipe();
+            IRecipe Recipe = Program.GetRecipeManager().GetRecipe(RecipeIndex);
 
-            if (recipe == null)
+            Console.WriteLine("1. Change the stored recipe's scale factor.");
+            Console.WriteLine("2. Reset the quantities of the stored recipe back to their initial values.");
+            Console.WriteLine("3. Clear the stored recipe.");
+            Console.WriteLine("4. Back to recipes list.");
+            Console.WriteLine();
+            Console.Write("> ");
+
+            try
             {
-                Console.WriteLine("There is no stored recipe. Please create one.\n");
-                Console.WriteLine("Press any key to go back to the main menu.");
-                Console.ReadLine();
-
-                return;
-            }
-
-            DisplayHeader("Ingredients");
-
-            IIngredient[] ingredients = recipe.GetIngredients();
-
-            for (var i = 1; i < ingredients.Length + 1; i++)
+                int choice = Int32.Parse(Console.ReadLine());
+            } catch (Exception ex)
             {
-                if (ingredients[i - 1].GetUnitOfMeasurement() != null && ingredients[i - 1].GetUnitOfMeasurement() != "")
-                {
-                    Console.WriteLine(i + ". " + ingredients[i - 1].GetQuantity() * recipe.GetRecipeScaleFactor() + " " + ingredients[i - 1].GetUnitOfMeasurement() + " of " + ingredients[i - 1].GetName());
-                } else
-                {
-                    Console.WriteLine(i + ". " + ingredients[i - 1].GetQuantity() * recipe.GetRecipeScaleFactor() + " " + ingredients[i - 1].GetName());
-                }
+                Clear();
+                Show();
             }
-
-            DisplayHeader("Steps");
-
-            IStep[] steps = recipe.GetSteps();
-
-            for (var i = 1; i < steps.Length + 1; i++)
-            {
-                Console.WriteLine(i + ". " + steps[i - 1].GetStepDescription());
-            }
-
-            Console.WriteLine("\nPress any key to exit to the main menu.");
-            Console.ReadLine();
         }
     }
 }

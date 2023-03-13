@@ -55,6 +55,29 @@ namespace SimpleRecipes.Gui
         }
 
         /**
+         * This method will display a light header to the Console
+         */
+        public static void DisplayLightHeader(String text)
+        {
+            int ConsoleWidth = Console.BufferWidth; // Get the most number of characters currently on one line of the console
+
+            for (int i = 0; i < ConsoleWidth; i++) // Loop through them
+            {
+                Console.Write("-"); // Write * for every character in one line
+            }
+
+            Console.Write("\n");
+            Console.WriteLine("| " + text); // Write the header text to the console
+
+            for (int i = 0; i < ConsoleWidth; i++)
+            {
+                Console.Write("-");
+            }
+
+            Console.Write("\n");
+        }
+
+        /**
          * This method will return a string from the user
          */
         public string GetStringInput(string prompt, bool canBeEmpty)
@@ -128,13 +151,13 @@ namespace SimpleRecipes.Gui
         /**
          * This method will return an float from the user
          */
-        public double GetFloatInput(string prompt)
+        public float GetFloatInput(string prompt)
         {
             try
             {
                 Console.Write(prompt + ": ");
 
-                return NFloat.Parse(Console.ReadLine());
+                return float.Parse(Console.ReadLine());
             }
             catch
             {

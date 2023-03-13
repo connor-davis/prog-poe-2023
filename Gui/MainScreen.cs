@@ -16,10 +16,10 @@ namespace SimpleRecipes.Gui
             Console.WriteLine("Welcome back Chef. What would you like to do?");
             Console.WriteLine();
             Console.WriteLine("1. Create a new recipe.");
-            Console.WriteLine("2. Display the stored recipe.");
+            Console.WriteLine("2. Display the stored recipes.");
             Console.WriteLine("3. Change the stored recipe's scale factor.");
             Console.WriteLine("4. Reset the quantities of the stored recipe back to their initial values.");
-            Console.WriteLine("5. Clear the stored recipe.");
+            Console.WriteLine("5. Clear the stored recipes.");
             Console.WriteLine("6. Close the application.");
             Console.WriteLine();
             Console.Write("> ");
@@ -44,10 +44,10 @@ namespace SimpleRecipes.Gui
                         }
                     case 2:
                         {
-                            DisplayRecipeScreen displayRecipeScreen = new();
+                            DisplayRecipesScreen displayRecipesScreen = new();
 
                             Clear();
-                            displayRecipeScreen.Show();
+                            displayRecipesScreen.Show();
 
                             Clear();
                             Show();
@@ -56,10 +56,10 @@ namespace SimpleRecipes.Gui
                         }
                     case 3:
                         {
-                            RecipeScaleFactorScreen scaleRecipeScreen = new();
+                            //RecipeScaleFactorScreen scaleRecipeScreen = new();
 
-                            Clear();
-                            scaleRecipeScreen.Show();
+                            //Clear();
+                            //scaleRecipeScreen.Show();
 
                             Clear();
                             Show();
@@ -68,18 +68,18 @@ namespace SimpleRecipes.Gui
                         }
                     case 4:
                         {
-                            Recipe storedRecipe = (Recipe)Program.GetRecipe();
+                            //Recipe storedRecipe = (Recipe)Program.GetRecipe();
 
-                            if (storedRecipe == null)
-                            {
-                                Clear();
-                                Show();
+                            //if (storedRecipe == null)
+                            //{
+                            //    Clear();
+                            //    Show();
+//
+                            //    break;
+                            //}
 
-                                break;
-                            }
-
-                            storedRecipe.SetRecipeScaleFactor(1.0f);
-                            Program.SetRecipe(storedRecipe);
+                            //storedRecipe.SetRecipeScaleFactor(1.0f);
+                            //Program.SetRecipe(storedRecipe);
 
                             Clear();
                             Show();
@@ -88,7 +88,7 @@ namespace SimpleRecipes.Gui
                         }
                     case 5:
                         {
-                            Program.SetRecipe(null);
+                            // Program.SetRecipe(null);
 
                             Clear();
                             Show();

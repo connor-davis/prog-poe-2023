@@ -3,6 +3,7 @@ using SimpleRecipes.Entities;
 using SimpleRecipes.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,7 +24,11 @@ namespace SimpleRecipes.Gui
              */
             Recipe newRecipe = new Recipe();
 
-            DisplayHeader("Ingredients");
+            DisplayHeader("Create Recipe");
+
+            string recipeName = GetStringInput("What is the name of the new recipe?", false);
+
+            DisplayLightHeader("Ingredients");
 
             int numberOfIngredients = GetIntInput("How many ingredients will this recipe consist of? [number]");
 
@@ -31,24 +36,24 @@ namespace SimpleRecipes.Gui
              * Second we can initialize a new IIngredients array using the
              * number of ingredients the user wants to add to the recipe.
              */
-            IIngredient[] ingredients = new IIngredient[numberOfIngredients];
+            Collection<IIngredient> ingredients = new Collection<IIngredient>();
 
             for (int i = 1; i < numberOfIngredients + 1; i++)
             {
                 string ingredientName = GetStringInput("What is the name of ingredient " + i + "? [word]", false);
                 int ingredientQuantity = GetIntInput("What is the quantity of ingredient " + i + "? [number]");
                 string ingredientUnitOfMeasurement = GetStringInput("What is the unit of measurement of ingredient " + i + "? [word, e.g. ml]", true);
+                float ingredientNumberOfCalories = GetFloatInput("How many calories are in this ingredient? [number]");
+                string ingredientFoodGroup = GetStringInput("What is the food group of ingredient " + i + "? [word, e.g. vegetable]", false);
 
                 /**
                  * We can now create a new ingredient with the information gathered
                  * from the user.
                  */
-                Ingredient newIngredient = new Ingredient(ingredientName, ingredientQuantity, ingredientUnitOfMeasurement);
-
-                ingredients[i - 1] = newIngredient;
+                ingredients.Add(new Ingredient(ingredientName, ingredientQuantity, ingredientUnitOfMeasurement, ingredientNumberOfCalories, ingredientFoodGroup));
             }
 
-            DisplayHeader("Steps");
+            DisplayLightHeader("Steps");
 
             int numberOfSteps = GetIntInput("How many steps will this recipe consist of? [number]");
 
@@ -56,7 +61,7 @@ namespace SimpleRecipes.Gui
              * Second we can initialize a new IIngredients array using the
              * number of ingredients the user wants to add to the recipe.
              */
-            IStep[] steps = new IStep[numberOfSteps];
+            Collection<IStep> steps = new Collection<IStep>();
 
             for (int i = 1; i < numberOfSteps + 1; i++)
             {
@@ -66,15 +71,23 @@ namespace SimpleRecipes.Gui
                  * We can now create a new ingredient with the information gathered
                  * from the user.
                  */
-                Step newStep = new Step(stepDescription);
-
-                steps[i - 1] = newStep;
+                steps.Add(new Step(stepDescription));
             }
 
-            newRecipe.SetIngredients(ingredients);
-            newRecipe.SetSteps(steps);
+            // Set the name of the new recipe
+            newRecipe
+                .SetName(recipeName);
+            // Set the ingredients of the new recipe
+            newRecipe
+                .SetIngredients(ingredients);
+            // Set the steps of the new recipe
+            newRecipe
+                .SetSteps(steps);
 
-            Program.SetRecipe(newRecipe);
+            // Add the new recipe to the collection of recipes.
+            Program
+                .GetRecipeManager()
+                .AddRecipe(newRecipe);
         }
     }
 }

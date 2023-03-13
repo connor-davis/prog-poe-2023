@@ -9,26 +9,26 @@ namespace SimpleRecipes.Gui
 {
     class DisplayRecipeScreen : ConsoleGui
     {
-        private int RecipeIndex = 0;
+        private IRecipe? Recipe = null;
 
         public DisplayRecipeScreen()
         {
 
         }
 
-        public int GetRecipeIndex() {
-            return RecipeIndex;
+        public IRecipe GetRecipe() {
+            return Recipe;
         }
 
-        public void SetRecipeIndex(int index) {
-            RecipeIndex = index;
+        public void SetRecipe(IRecipe recipe) {
+            Recipe = recipe;
         }
 
         public override void Show()
         {
             ShowApplicationName();
 
-            IRecipe Recipe = Program.GetRecipeManager().GetRecipe(RecipeIndex);
+            DisplayHeader(Recipe.GetName());
 
             Console.WriteLine("1. Change the stored recipe's scale factor.");
             Console.WriteLine("2. Reset the quantities of the stored recipe back to their initial values.");

@@ -11,8 +11,8 @@ namespace SimpleRecipes.Gui
 {
     class DisplayRecipesScreen : ConsoleGui
     {
-        private int currentRecipe = 0;
-
+        private int currentPage = 1;
+        
         public override void Show()
         {
             ShowApplicationName();
@@ -26,91 +26,119 @@ namespace SimpleRecipes.Gui
                 return;
             }
 
+            DisplayHeader("Recipes - 10 per page");
+
             /**
              * Here we retrieve the recipe from the Program class
              * that is stored in memory.
              */
-            IRecipe Recipe = Program.GetRecipeManager().GetRecipe(currentRecipe);
+            Collection<IRecipe> Recipes = Program.GetRecipeManager().GetRecipes();
 
-            DisplayHeader(Recipe.GetName());
-            DisplayLightHeader("Ingredients");
+            var numberOfPages = Math.Ceiling((decimal) Recipes.Count / 10);
+            var numberOfRecipesMissingForLastPage = (numberOfPages * 10) - Recipes.Count;
 
-            Collection<IIngredient> Ingredients = Recipe.GetIngredients();
-
-            for (var i = 1; i < Ingredients.Count + 1; i++)
+            for (var i = 1; i < Recipes.Count + 1; i++)
             {
-                if (Ingredients[i - 1].GetUnitOfMeasurement() != null && Ingredients[i - 1].GetUnitOfMeasurement() != "")
+                if (i > (currentPage - 1) * 5 && i < (currentPage * 5) + 1)
                 {
-                    Console.WriteLine(i + ". " + Ingredients[i - 1].GetQuantity() * Recipe.GetRecipeScaleFactor() + " " + Ingredients[i - 1].GetUnitOfMeasurement() + " of " + Ingredients[i - 1].GetName());
-                }
-                else
-                {
-                    Console.WriteLine(i + ". " + Ingredients[i - 1].GetQuantity() * Recipe.GetRecipeScaleFactor() + " " + Ingredients[i - 1].GetName());
+                    Console.WriteLine(i + ". " + Recipes[i - 1].GetName() + " [" + Recipes[i - 1].GetIngredients().Count + " Ingredients] [" + Recipes[i - 1].GetSteps().Count + " Steps]");
                 }
             }
 
-            DisplayLightHeader("Steps");
-
-            Collection<IStep> Steps = Recipe.GetSteps();
-
-            for (var i = 1; i < Steps.Count + 1; i++)
+            if (currentPage == numberOfPages)
             {
-                Console.WriteLine(i + ". " + Steps[i - 1].GetStepDescription());
+                for (var i = 0; i < numberOfRecipesMissingForLastPage; i++)
+                {
+                    Console.WriteLine();
+                }
             }
 
-            Console.WriteLine("\n1. Previous recipe");
-            Console.WriteLine("2. Next recipe");
-            Console.WriteLine("3. View recipe");
-            Console.WriteLine("4. Go back to main menu");
+            Console.WriteLine();
+            Console.WriteLine("> Type the number of the recipe to view.");
+            Console.WriteLine("> Type [next] to view the next page of recipes.");
+            Console.WriteLine("> Type [previous] to view the previous page of recipes.");
+            Console.WriteLine("> Type [back] to go back to the main menu.");
             Console.WriteLine();
             Console.Write("> ");
 
+            string choice = Console.ReadLine();
+
             try
             {
-                int choice = Int32.Parse(Console.ReadLine());
+                int recipeNumber = Int32.Parse(choice);
+                IRecipe recipeFound = Recipes[recipeNumber - 1];
 
+                if (recipeFound != null)
+                {
+                    DisplayRecipeScreen displayRecipeScreen = new();
+
+                    displayRecipeScreen.SetRecipe(recipeFound);
+                    displayRecipeScreen.Show();
+
+                    Clear();
+                    Show();
+                } else
+                {
+                    Console.WriteLine("> Please enter the number of an existing recipe.");
+                    Thread.Sleep(2000);
+
+                    Clear();
+                    Show();
+                }
+            } catch (Exception ex)
+            {
                 switch (choice)
                 {
-                    case 1:
+                    case "next":
                         {
-                            if (currentRecipe != 0)
+                            if (currentPage < numberOfPages)
                             {
-                                currentRecipe = currentRecipe - 1;
+                                currentPage = currentPage + 1;
+
+                                Clear();
+                                Show();
+
+                                break;
                             }
-
-                            Clear();
-                            Show();
-
-                            break;
-                        }
-                    case 2:
-                        {
-                            if (currentRecipe != Program.GetRecipeManager().GetRecipes().Count - 1)
+                            else
                             {
-                                currentRecipe = currentRecipe + 1;
+                                ClearLine();
+
+                                Console.WriteLine("> There are no more pages.");
+                                Thread.Sleep(2000);
+
+                                Clear();
+                                Show();
+
+                                break;
                             }
-
-                            Clear();
-                            Show();
-
-                            break;
                         }
-                    case 3:
+                    case "previous":
                         {
-                            DisplayRecipeScreen displayRecipeScreen = new();
+                            if (currentPage > 1)
+                            {
+                                currentPage = currentPage - 1;
 
-                            displayRecipeScreen.SetRecipeIndex(currentRecipe);
-                            displayRecipeScreen.Show();
+                                Clear();
+                                Show();
 
-                            Clear();
-                            Show();
+                                break;
+                            }
+                            else
+                            {
+                                ClearLine();
 
-                            break;
+                                Console.WriteLine("> You are already on the first page.");
+                                Thread.Sleep(2000);
+
+                                Clear();
+                                Show();
+
+                                break;
+                            }
                         }
-                    case 4:
-                        {
-                            break;
-                        }
+                    case "back":
+                        break;
                     default:
                         {
                             Clear();
@@ -119,10 +147,6 @@ namespace SimpleRecipes.Gui
                             break;
                         }
                 }
-            } catch (Exception ex)
-            {
-                Clear();
-                Show();
             }
         }
     }

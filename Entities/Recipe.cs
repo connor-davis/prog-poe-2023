@@ -48,12 +48,8 @@ namespace SimpleRecipes.Entities
                 totalCalories += (Ingredient.GetNumberOfCalories() * RecipeScaleFactor);
             }
 
-            NotifyUser notifyUser = new(Console.WriteLine);
-
-            if (totalCalories > 300f)
-            {
-                notifyUser("> This recipe's calories exceed 300 calories.\n");
-            }
+            NotifyIfCaloriesExceed notifyUser = new(CheckCalories);
+            notifyUser("> This recipe's calories exceed 300 calories.\n", totalCalories, 300f);
 
             return totalCalories;
         }
@@ -82,6 +78,18 @@ namespace SimpleRecipes.Entities
          * This method will be used as a Delegate to notify the user about things
          * happening or detected in the application.
          */
-        public delegate void NotifyUser(string message);
+        public delegate void NotifyIfCaloriesExceed(string message, float numberOfCalories, float maxNumberOfCalories);
+
+        /**
+         * This method will check the number of calories against the maximum
+         * number of calories allowed.
+         */
+        public static void CheckCalories(string message, float numberOfCalories, float maxNumberOfCalories)
+        {
+            if (numberOfCalories > maxNumberOfCalories)
+            {
+                Console.WriteLine(message);
+            }
+        }
     }
 }

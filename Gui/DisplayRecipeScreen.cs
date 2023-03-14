@@ -7,11 +7,6 @@ namespace SimpleRecipes.Gui
     {
         private IRecipe? Recipe = null;
 
-        public DisplayRecipeScreen()
-        {
-
-        }
-
         public IRecipe GetRecipe()
         {
             return Recipe;

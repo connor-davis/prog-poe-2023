@@ -25,6 +25,28 @@ namespace SimpleRecipes.Managers
             Recipes.Remove(recipe);
         }
 
+        public void ClearRecipes()
+        { 
+            Recipes.Clear();
+        }
+
+        public void SetRecipeScaleFactor(IRecipe recipe, float recipeScaleFactor)
+        {
+            foreach (IRecipe storedRecipe in Recipes)
+            {
+                int indexOfStoredRecipe = Recipes.IndexOf(storedRecipe);
+
+                if (storedRecipe.Equals(recipe))
+                {
+                    recipe.SetRecipeScaleFactor(recipeScaleFactor);
+
+                    Recipes[indexOfStoredRecipe] = recipe;
+
+                    return;
+                }
+            }
+        }
+
         public Collection<IRecipe> GetRecipes() {
             return Recipes;
         }

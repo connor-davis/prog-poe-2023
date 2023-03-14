@@ -13,6 +13,7 @@ namespace SimpleRecipes.Interfaces
         Collection<IIngredient> GetIngredients();
         Collection<IStep> GetSteps();
         float GetRecipeScaleFactor();
+        float GetTotalCalories();
 
         void SetName(string name);
         void SetIngredients(Collection<IIngredient> ingredients);

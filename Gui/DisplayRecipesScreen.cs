@@ -73,12 +73,15 @@ namespace SimpleRecipes.Gui
                     DisplayRecipeScreen displayRecipeScreen = new();
 
                     displayRecipeScreen.SetRecipe(recipeFound);
+                    Clear();
                     displayRecipeScreen.Show();
 
                     Clear();
                     Show();
                 } else
                 {
+                    ClearLine();
+
                     Console.WriteLine("> Please enter the number of an existing recipe.");
                     Thread.Sleep(2000);
 
@@ -138,6 +141,7 @@ namespace SimpleRecipes.Gui
                             }
                         }
                     case "back":
+                        Clear();
                         break;
                     default:
                         {

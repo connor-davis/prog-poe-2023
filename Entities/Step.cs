@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SimpleRecipes.Interfaces;
+﻿using SimpleRecipes.Interfaces;
 
 namespace SimpleRecipes.Entities
 {
-    class Step : IStep
+    public class Step : IStep
     {
         private string StepDescription;
 
-        public Step() { }
+        public Step() 
+        {
+            StepDescription = string.Empty;
+        }
 
         public Step(string stepDescription)
         {

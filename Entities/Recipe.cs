@@ -1,44 +1,70 @@
 ﻿using SimpleRecipes.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 
 namespace SimpleRecipes.Entities
 {
-    class Recipe : IRecipe
+    public class Recipe : IRecipe
     {
-        private IIngredient[] Ingredients;
-        private IStep[] Steps;
+        private string Name;
+        private Collection<IIngredient> Ingredients = new();
+        private Collection<IStep> Steps = new();
         private float RecipeScaleFactor = 1.0f;
 
-        public Recipe() { }
-
-        public Recipe(IIngredient[] ingredients, IStep[] steps)
+        public Recipe()
         {
+            Name = string.Empty;
+        }
+
+        public Recipe(string name, Collection<IIngredient> ingredients, Collection<IStep> steps)
+        {
+            Name = name;
             Ingredients = ingredients;
             Steps = steps;
         }
 
-        public IIngredient[] GetIngredients()
+        public string GetName()
+        {
+            return Name;
+        }
+
+        public Collection<IIngredient> GetIngredients()
         {
             return Ingredients;
         }
 
-        public IStep[] GetSteps()
+        public Collection<IStep> GetSteps()
         {
             return Steps;
         }
 
         public float GetRecipeScaleFactor() { return RecipeScaleFactor; }
 
-        public void SetIngredients(IIngredient[] ingredients)
+        public float GetTotalCalories()
+        {
+            float totalCalories = 0.0f;
+
+            foreach (var Ingredient in GetIngredients())
+            {
+                totalCalories += (Ingredient.GetNumberOfCalories() * RecipeScaleFactor);
+            }
+
+            NotifyIfCaloriesExceed notifyUser = new(CheckCalories);
+            notifyUser("> This recipe's calories exceed 300 calories.\n", totalCalories, 300f);
+
+            return totalCalories;
+        }
+
+        public void SetName(string name)
+        {
+            Name = name;
+        }
+
+        public void SetIngredients(Collection<IIngredient> ingredients)
         {
             Ingredients = ingredients;
         }
 
-        public void SetSteps(IStep[] steps)
+        public void SetSteps(Collection<IStep> steps)
         {
             Steps = steps;
         }
@@ -46,6 +72,24 @@ namespace SimpleRecipes.Entities
         public void SetRecipeScaleFactor(float recipeScaleFactor)
         {
             RecipeScaleFactor = recipeScaleFactor;
+        }
+
+        /**
+         * This method will be used as a Delegate to notify the user about things
+         * happening or detected in the application.
+         */
+        public delegate void NotifyIfCaloriesExceed(string message, float numberOfCalories, float maxNumberOfCalories);
+
+        /**
+         * This method will check the number of calories against the maximum
+         * number of calories allowed.
+         */
+        public static void CheckCalories(string message, float numberOfCalories, float maxNumberOfCalories)
+        {
+            if (numberOfCalories > maxNumberOfCalories)
+            {
+                Console.WriteLine(message);
+            }
         }
     }
 }

@@ -1,17 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 
 namespace SimpleRecipes.Interfaces
 {
-    interface IRecipe
+    public interface IRecipe
     {
-        IIngredient[] GetIngredients();
-        IStep[] GetSteps();
+        string GetName();
+        Collection<IIngredient> GetIngredients();
+        Collection<IStep> GetSteps();
+        float GetRecipeScaleFactor();
+        float GetTotalCalories();
 
-        void SetIngredients(IIngredient[] ingredients);
-        void SetSteps(IStep[] steps);
+        void SetName(string name);
+        void SetIngredients(Collection<IIngredient> ingredients);
+        void SetSteps(Collection<IStep> steps);
+        void SetRecipeScaleFactor(float recipeScaleFactor);
     }
 }

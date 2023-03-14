@@ -1,30 +1,23 @@
 ﻿using SimpleRecipes.Gui;
-using SimpleRecipes.Entities;
-using SimpleRecipes.Interfaces;
+using SimpleRecipes.Managers;
 
 namespace SimpleRecipes
 {
     class Program
     {
-        protected Program() { }
-
-        private static IRecipe Recipe;
+        public static readonly RecipeManager RecipeManager = new();
 
         /**
          * The Main method will execute all of the functions
          * required to run this application.
          */
-        static void Main(string[] args)
+        public static void Main()
         {
             MainScreen mainScreen = new();
 
             mainScreen.Show();
         }
 
-        public static IRecipe GetRecipe() { return Recipe; }
-        public static void SetRecipe(Recipe recipe)
-        {
-            Recipe = recipe;
-        }
+        public static RecipeManager GetRecipeManager() { return RecipeManager; }
     }
 }

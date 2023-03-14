@@ -1,36 +1,25 @@
-﻿using SimpleRecipes.Entities;
-using SimpleRecipes.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SimpleRecipes.Interfaces;
 
 namespace SimpleRecipes.Gui
 {
     class RecipeScaleFactorScreen : ConsoleGui
     {
+        private IRecipe Recipe;
+
+        public IRecipe GetRecipe() { return Recipe; }
+        public void SetRecipe(IRecipe recipe) { Recipe = recipe; }
+
         public override void Show()
         {
             ShowApplicationName();
 
-            Recipe storedRecipe = (Recipe)Program.GetRecipe();
+            DisplayHeader("Change The Scale of " + Recipe.GetName() + " to?");
 
-            if (storedRecipe == null)
-            {
-                Console.WriteLine("There is no stored recipe. Please create one.\n");
-                Console.WriteLine("Press any key to go back to the main menu.");
-                Console.ReadLine();
-
-                return;
-            }
-
-            DisplayHeader("Choose the scale factor from the menu below.");
-
-            Console.WriteLine("1. Scale by half");
-            Console.WriteLine("2. Scale by double");
-            Console.WriteLine("3. Scale by triple");
-            Console.WriteLine("4. Back to main menu.");
+            Console.WriteLine();
+            Console.WriteLine("1. 1/2 scale");
+            Console.WriteLine("2. 2x scale");
+            Console.WriteLine("3. 3x scale");
+            Console.WriteLine("4. Back to recipe details");
             Console.WriteLine();
             Console.Write("> ");
 
@@ -42,20 +31,20 @@ namespace SimpleRecipes.Gui
                 {
                     case 1:
                         {
-                            storedRecipe.SetRecipeScaleFactor(0.5f);
-                            Program.SetRecipe(storedRecipe);
+                            Program.GetRecipeManager().SetRecipeScaleFactor(Recipe, 0.5f);
+
                             break;
                         }
                     case 2:
                         {
-                            storedRecipe.SetRecipeScaleFactor(2.0f);
-                            Program.SetRecipe(storedRecipe);
+                            Program.GetRecipeManager().SetRecipeScaleFactor(Recipe, 2.0f);
+
                             break;
                         }
                     case 3:
                         {
-                            storedRecipe.SetRecipeScaleFactor(3.0f);
-                            Program.SetRecipe(storedRecipe);
+                            Program.GetRecipeManager().SetRecipeScaleFactor(Recipe, 3.0f);
+
                             break;
                         }
                     case 4:
@@ -70,7 +59,8 @@ namespace SimpleRecipes.Gui
                             break;
                         }
                 }
-            } catch (Exception ex)
+            }
+            catch
             {
                 Clear();
                 Show();

@@ -1,10 +1,5 @@
 ﻿using SimpleRecipes.Interfaces;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SimpleRecipes.Gui
 {
@@ -17,11 +12,13 @@ namespace SimpleRecipes.Gui
 
         }
 
-        public IRecipe GetRecipe() {
+        public IRecipe GetRecipe()
+        {
             return Recipe;
         }
 
-        public void SetRecipe(IRecipe recipe) {
+        public void SetRecipe(IRecipe recipe)
+        {
             Recipe = recipe;
         }
 
@@ -35,12 +32,13 @@ namespace SimpleRecipes.Gui
 
             Collection<IIngredient> Ingredients = Recipe.GetIngredients();
 
-            for (var i = 1; i < Ingredients.Count + 1; i++) 
+            for (var i = 1; i < Ingredients.Count + 1; i++)
             {
                 if (Ingredients[i - 1].GetUnitOfMeasurement() != string.Empty)
                 {
                     Console.WriteLine(i + ". " + Ingredients[i - 1].GetQuantity() * Recipe.GetRecipeScaleFactor() + " " + Ingredients[i - 1].GetUnitOfMeasurement() + " of " + Ingredients[i - 1].GetName());
-                } else
+                }
+                else
                 {
                     Console.WriteLine(i + ". " + Ingredients[i - 1].GetQuantity() * Recipe.GetRecipeScaleFactor() + " " + Ingredients[i - 1].GetName());
                 }
@@ -112,7 +110,8 @@ namespace SimpleRecipes.Gui
                             break;
                         }
                 }
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 Clear();
                 Show();

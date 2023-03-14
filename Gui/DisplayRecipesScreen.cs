@@ -1,18 +1,12 @@
-﻿using SimpleRecipes.Entities;
-using SimpleRecipes.Interfaces;
-using System;
-using System.Collections.Generic;
+﻿using SimpleRecipes.Interfaces;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SimpleRecipes.Gui
 {
     class DisplayRecipesScreen : ConsoleGui
     {
         private int currentPage = 1;
-        
+
         public override void Show()
         {
             ShowApplicationName();
@@ -34,7 +28,7 @@ namespace SimpleRecipes.Gui
              */
             Collection<IRecipe> Recipes = Program.GetRecipeManager().GetRecipes();
 
-            var numberOfPages = Math.Ceiling((decimal) Recipes.Count / 10);
+            var numberOfPages = Math.Ceiling((decimal)Recipes.Count / 10);
             var numberOfRecipesMissingForLastPage = (numberOfPages * 10) - Recipes.Count;
 
             for (var i = 1; i < Recipes.Count + 1; i++)
@@ -78,7 +72,8 @@ namespace SimpleRecipes.Gui
 
                     Clear();
                     Show();
-                } else
+                }
+                else
                 {
                     ClearLine();
 
@@ -88,7 +83,8 @@ namespace SimpleRecipes.Gui
                     Clear();
                     Show();
                 }
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 switch (choice)
                 {

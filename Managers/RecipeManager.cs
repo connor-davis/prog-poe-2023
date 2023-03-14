@@ -1,11 +1,5 @@
-﻿using SimpleRecipes.Entities;
-using SimpleRecipes.Interfaces;
-using System;
-using System.Collections.Generic;
+﻿using SimpleRecipes.Interfaces;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SimpleRecipes.Managers
 {
@@ -26,7 +20,7 @@ namespace SimpleRecipes.Managers
         }
 
         public void ClearRecipes()
-        { 
+        {
             Recipes.Clear();
         }
 
@@ -47,7 +41,8 @@ namespace SimpleRecipes.Managers
             }
         }
 
-        public Collection<IRecipe> GetRecipes() {
+        public Collection<IRecipe> GetRecipes()
+        {
             return Recipes;
         }
 

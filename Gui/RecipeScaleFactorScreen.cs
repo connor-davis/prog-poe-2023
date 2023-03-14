@@ -1,10 +1,4 @@
-﻿using SimpleRecipes.Entities;
-using SimpleRecipes.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SimpleRecipes.Interfaces;
 
 namespace SimpleRecipes.Gui
 {
@@ -32,7 +26,7 @@ namespace SimpleRecipes.Gui
             try
             {
                 int choice = Int32.Parse(Console.ReadLine());
-            
+
                 switch (choice)
                 {
                     case 1:
@@ -65,7 +59,8 @@ namespace SimpleRecipes.Gui
                             break;
                         }
                 }
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 Clear();
                 Show();

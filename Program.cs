@@ -1,7 +1,4 @@
 ﻿using SimpleRecipes.Gui;
-using SimpleRecipes.Entities;
-using SimpleRecipes.Interfaces;
-using System.Collections.ObjectModel;
 using SimpleRecipes.Managers;
 
 namespace SimpleRecipes
@@ -12,7 +9,7 @@ namespace SimpleRecipes
 
         protected Program() { }
 
-        
+
 
         /**
          * The Main method will execute all of the functions

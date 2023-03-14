@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SimpleRecipes.Interfaces;
+﻿using SimpleRecipes.Interfaces;
 
 namespace SimpleRecipes.Entities
 {
@@ -33,13 +28,16 @@ namespace SimpleRecipes.Entities
             FoodGroup = foodGroup;
         }
 
-        public string GetName() {
+        public string GetName()
+        {
             return Name;
         }
-        public int GetQuantity() {
+        public int GetQuantity()
+        {
             return Quantity;
         }
-        public string GetUnitOfMeasurement() {
+        public string GetUnitOfMeasurement()
+        {
             return UnitOfMeasurement;
         }
         public float GetNumberOfCalories()
@@ -51,20 +49,24 @@ namespace SimpleRecipes.Entities
             return FoodGroup;
         }
 
-        public void SetName(string name) {
+        public void SetName(string name)
+        {
             Name = name;
         }
-        public void SetQuantity(int quantity) {
+        public void SetQuantity(int quantity)
+        {
             Quantity = quantity;
         }
-        public void SetUnitOfMeasurement(string unitOfMeasurement) {
+        public void SetUnitOfMeasurement(string unitOfMeasurement)
+        {
             UnitOfMeasurement = unitOfMeasurement;
         }
         public void SetNumberOfCalories(float numberOfCalories)
         {
             NumberOfCalories = numberOfCalories;
         }
-        public void SetFoodGroup(string foodGroup) {
+        public void SetFoodGroup(string foodGroup)
+        {
             FoodGroup = foodGroup;
         }
     }

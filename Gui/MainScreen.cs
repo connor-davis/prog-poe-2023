@@ -1,11 +1,4 @@
-﻿using SimpleRecipes.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SimpleRecipes.Gui
+﻿namespace SimpleRecipes.Gui
 {
     class MainScreen : ConsoleGui
     {
@@ -73,7 +66,8 @@ namespace SimpleRecipes.Gui
                             break;
                         }
                 }
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 Clear();
                 Show();

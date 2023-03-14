@@ -7,6 +7,8 @@ namespace SimpleRecipes
     {
         public static readonly RecipeManager RecipeManager = new();
 
+        protected Program() { }
+
         /**
          * The Main method will execute all of the functions
          * required to run this application.

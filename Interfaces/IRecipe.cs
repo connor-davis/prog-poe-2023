@@ -2,7 +2,7 @@
 
 namespace SimpleRecipes.Interfaces
 {
-    interface IRecipe
+    public interface IRecipe
     {
         string GetName();
         Collection<IIngredient> GetIngredients();

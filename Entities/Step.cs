@@ -2,11 +2,14 @@
 
 namespace SimpleRecipes.Entities
 {
-    class Step : IStep
+    public class Step : IStep
     {
         private string StepDescription;
 
-        public Step() { }
+        public Step() 
+        {
+            StepDescription = string.Empty;
+        }
 
         public Step(string stepDescription)
         {

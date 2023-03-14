@@ -1,6 +1,6 @@
 ﻿namespace SimpleRecipes.Interfaces
 {
-    interface IStep
+    public interface IStep
     {
         string GetStepDescription();
         void SetStepDescription(string stepDescription);

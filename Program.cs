@@ -5,20 +5,16 @@ namespace SimpleRecipes
 {
     class Program
     {
-        public static RecipeManager RecipeManager;
+        public static RecipeManager RecipeManager = new();
 
-        protected Program() { }
-
-
+        public Program() { }
 
         /**
          * The Main method will execute all of the functions
          * required to run this application.
          */
-        static void Main(string[] args)
+        public static void Main()
         {
-            RecipeManager = new RecipeManager();
-
             MainScreen mainScreen = new();
 
             mainScreen.Show();

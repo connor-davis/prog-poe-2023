@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 
 namespace SimpleRecipes.Managers
 {
-    class RecipeManager
+    public class RecipeManager
     {
         public RecipeManager() { }
 

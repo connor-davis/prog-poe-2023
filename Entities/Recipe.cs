@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 
 namespace SimpleRecipes.Entities
 {
-    class Recipe : IRecipe
+    public class Recipe : IRecipe
     {
         private string Name;
         private Collection<IIngredient> Ingredients = new Collection<IIngredient>();

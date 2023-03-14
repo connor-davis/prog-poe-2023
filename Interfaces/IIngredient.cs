@@ -1,6 +1,6 @@
 ﻿namespace SimpleRecipes.Interfaces
 {
-    interface IIngredient
+    public interface IIngredient
     {
         string GetName();
         int GetQuantity();

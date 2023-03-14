@@ -1,10 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "L4UcN7myqMobWyu0G/dSKM/+XWk35iNluBKLZC5KM0trSMYzQJuaIEBFW13cfu+zBvBu+m6DBV72sl3umLUptw==",
+  "dgSpecHash": "vWUoEocsB054tYDB2hRgn1u6A6uGXKK45KTkiGIpU/bY8XdCkJ+3KUz2WL8PX7a8huQ+5xjCp6zLzDV58P34Ug==",
   "success": true,
   "projectFilePath": "C:\\prog-poe-2023\\SimpleRecipes.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\Connor\\.nuget\\packages\\mstest.testframework\\3.0.2\\mstest.testframework.3.0.2.nupkg.sha512"
-  ],
+  "expectedPackageFiles": [],
   "logs": []
 }

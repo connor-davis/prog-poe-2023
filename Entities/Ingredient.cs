@@ -2,7 +2,7 @@
 
 namespace SimpleRecipes.Entities
 {
-    class Ingredient : IIngredient
+    public class Ingredient : IIngredient
     {
         private string Name;
         private int Quantity;

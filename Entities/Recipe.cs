@@ -6,8 +6,8 @@ namespace SimpleRecipes.Entities
     public class Recipe : IRecipe
     {
         private string Name;
-        private Collection<IIngredient> Ingredients = new Collection<IIngredient>();
-        private Collection<IStep> Steps = new Collection<IStep>();
+        private Collection<IIngredient> Ingredients = new();
+        private Collection<IStep> Steps = new();
         private float RecipeScaleFactor = 1.0f;
 
         public Recipe()
@@ -45,7 +45,7 @@ namespace SimpleRecipes.Entities
 
             foreach (var Ingredient in GetIngredients())
             {
-                totalCalories = totalCalories + (Ingredient.GetNumberOfCalories() * RecipeScaleFactor);
+                totalCalories += (Ingredient.GetNumberOfCalories() * RecipeScaleFactor);
             }
 
             NotifyUser notifyUser = new(Console.WriteLine);

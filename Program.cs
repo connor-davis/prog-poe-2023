@@ -5,9 +5,7 @@ namespace SimpleRecipes
 {
     class Program
     {
-        public static RecipeManager RecipeManager = new();
-
-        public Program() { }
+        public static readonly RecipeManager RecipeManager = new();
 
         /**
          * The Main method will execute all of the functions

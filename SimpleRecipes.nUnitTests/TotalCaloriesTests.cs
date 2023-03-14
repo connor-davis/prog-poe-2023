@@ -7,19 +7,14 @@ namespace SimpleRecipes.nUnitTests
 {
     public class TotalCaloriesTests
     {
+        private readonly Recipe recipe = new();
+
+        private readonly Collection<IIngredient> ingredients = new();
+        private readonly Collection<IStep> steps = new();
+
         [SetUp]
         public void Setup()
         {
-        }
-
-        [Test]
-        public void GetTotalCalories_EqualTest()
-        {
-            Recipe recipe = new();
-
-            Collection<IIngredient> ingredients = new();
-            Collection<IStep> steps = new();
-
             ingredients.Add(new Ingredient("coffee", 1, "teaspoon", 0f, "None"));
             ingredients.Add(new Ingredient("sugar", 3, "teaspoons", 48f, "Sweets"));
             ingredients.Add(new Ingredient("milk", 50, "ml", 22f, "Dairy"));
@@ -35,9 +30,12 @@ namespace SimpleRecipes.nUnitTests
             recipe.SetSteps(steps);
             recipe.SetName("Coffee");
             recipe.SetRecipeScaleFactor(1f);
+        }
 
+        [Test]
+        public void GetTotalCalories_EqualTest()
+        {
             Console.WriteLine("Total Calories: " + recipe.GetTotalCalories());
-
             Assert.That(recipe.GetTotalCalories(), Is.EqualTo(70f));
         }
     }

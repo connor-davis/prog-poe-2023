@@ -60,12 +60,10 @@ namespace SimpleRecipes.Gui
                         }
                 }
             }
-            catch (Exception ex)
+            catch
             {
                 Clear();
                 Show();
-
-                return;
             }
         }
     }

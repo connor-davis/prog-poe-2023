@@ -5,9 +5,7 @@ namespace SimpleRecipes.Managers
 {
     public class RecipeManager
     {
-        public RecipeManager() { }
-
-        private Collection<IRecipe> Recipes = new Collection<IRecipe>();
+        private readonly Collection<IRecipe> Recipes = new();
 
         public void AddRecipe(IRecipe recipe)
         {
